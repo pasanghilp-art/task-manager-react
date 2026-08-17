@@ -1,0 +1,26 @@
+.filter-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--card);
+  color: var(--muted);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: var(--shadow);
+}
+.filter-btn:hover { color: var(--text); border-color: #ccc; }
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(116,143,252,0.3);
+}

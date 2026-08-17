@@ -1,3 +1,5 @@
+import "./Stats.css";
+
 export function Stats() {
     return (
         <>

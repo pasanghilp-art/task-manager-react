@@ -1,0 +1,27 @@
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.task-count {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+.clear-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  box-shadow: var(--shadow);
+}
+.clear-btn:hover { color: var(--high); border-color: var(--high); }

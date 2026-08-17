@@ -1,3 +1,5 @@
+import "./BottomRow.css";
+
 export function BottomRow() {
     return (
         <>
