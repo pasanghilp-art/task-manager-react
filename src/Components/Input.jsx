@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./Input.css";
 
-export function Input() {
+export function Input([task, setTask]) {
+    const [text, setText] = useState("");
     const addBtn = () => {
-        c;
-        const text = taskInput.value.trim();
+        /*
         if (!text) {
             taskInput.focus();
             taskInput.style.borderColor = "#ff6b6b";
@@ -47,6 +47,22 @@ export function Input() {
         save();
         render();
     }
+    */
+        const newTask = [
+            ...task,
+            {
+                id: nextId++,
+                text: text,
+                priority: selectedPriority,
+                done: false,
+                created: Date.now(),
+            },
+        ];
+    };
+
+    function saveText(event) {
+        setText(event.target.value);
+    }
     return (
         <>
             <div class="input-card">
@@ -58,6 +74,8 @@ export function Input() {
                         placeholder="Add a new task..."
                         maxlength="80"
                         autocomplete="off"
+                        value={text}
+                        onChange={saveText}
                     />
                     <button class="add-btn" onClick={addBtn}>
                         + Add

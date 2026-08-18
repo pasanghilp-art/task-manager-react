@@ -5,12 +5,12 @@ import { Input } from "../Components/Input";
 import { Stats } from "../Components/Stats";
 import { TaskList } from "../Components/TaskList";
 
-export function HomePage() {
+export function HomePage({ task, setTask }) {
     return (
         <>
             <Header />
             <Stats />
-            <Input />
+            <Input task={task} setTask={setTask} />
             <Filters />
             <TaskList />
             <BottomRow />
