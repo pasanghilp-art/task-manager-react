@@ -73,6 +73,13 @@
   cursor: pointer;
   transition: all 0.15s;
 }
+
+@media (max-width: 480px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .input-row { flex-direction: column; }
+  .add-btn { width: 100%; }
+}
+
 .pri-btn.high { background: var(--high-bg); color: var(--high); border-color: var(--high-bg); }
 .pri-btn.med  { background: var(--med-bg);  color: var(--med);  border-color: var(--med-bg); }
 .pri-btn.low  { background: var(--low-bg);  color: var(--low);  border-color: var(--low-bg); }

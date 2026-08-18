@@ -93,3 +93,14 @@
   line-height: 1;
 }
 .del-btn:hover { opacity: 1; transform: scale(1.2); }
+
+.empty {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--muted);
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.empty-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.empty p { font-size: 14px; font-weight: 700; }

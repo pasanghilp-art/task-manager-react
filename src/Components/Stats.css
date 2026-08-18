@@ -37,3 +37,9 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
+
+@media (max-width: 480px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .input-row { flex-direction: column; }
+  .add-btn { width: 100%; }
+}
