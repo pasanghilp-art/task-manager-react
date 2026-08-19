@@ -1,32 +1,12 @@
 import "./TaskList.css";
 
 export function TaskList({ task, setTask, filterPriority }) {
-    if (task.length === 0) {
-        return (
-            <div className="empty">
-                <span className="empty-icon">📝</span>
-                <p>No tasks yet</p>
-            </div>
-        );
-    }
-
-    function toggleDone(id) {
-        const updated = task.map((t) =>
-            t.id === id ? { ...t, done: !t.done } : t,
-        );
-        setTask(updated);
-    }
-
-    function deleteTask(id) {
-        const updated = task.filter((taskItem) => taskItem.id !== id);
-        setTask(updated);
-    }
-
     const filteredTask = task.filter((taskItem) => {
         if (filterPriority === "all") return true;
         if (filterPriority === "done") return taskItem.done;
         return taskItem.priority === filterPriority;
     });
+
     if (filteredTask.length === 0) {
         return (
             <div className="empty">
@@ -36,6 +16,18 @@ export function TaskList({ task, setTask, filterPriority }) {
         );
     }
 
+    const toggleDone = (id) => {
+        const updated = task.map((t) =>
+            t.id === id ? { ...t, done: !t.done } : t,
+        );
+        setTask(updated);
+    };
+
+    const deleteTask = (id) => {
+        const updated = task.filter((taskItem) => taskItem.id !== id);
+        setTask(updated);
+    };
+
     return (
         <>
             <div className="task-list" id="taskList">
@@ -43,7 +35,7 @@ export function TaskList({ task, setTask, filterPriority }) {
                     return (
                         <div
                             key={taskItem.id}
-                            className={`task-item ${taskItem.priority}`}
+                            className={`task-item ${taskItem.priority}${taskItem.done ? " done" : ""}`}
                         >
                             <input
                                 type="checkbox"

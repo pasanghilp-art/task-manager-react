@@ -9,7 +9,7 @@ export function HomePage({ task, setTask, filterPriority, setFilterPriority }) {
     return (
         <>
             <Header />
-            <Stats />
+            <Stats task={task} />
             <Input task={task} setTask={setTask} />
             <Filters
                 filterPriority={filterPriority}
@@ -20,7 +20,7 @@ export function HomePage({ task, setTask, filterPriority, setFilterPriority }) {
                 setTask={setTask}
                 filterPriority={filterPriority}
             />
-            <BottomRow />
+            <BottomRow task={task} setTask={setTask} />
         </>
     );
 }
