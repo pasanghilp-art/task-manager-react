@@ -4,10 +4,10 @@ import "./App.css";
 
 function App() {
     const [task, setTask] = useState(
-        JSON.parse(localStorage.getITem("list") || []),
+        JSON.parse(localStorage.getItem("list") || "[]"),
     );
     useEffect(() => {
-        localStorage.setITem("list", JSON.stringify(task));
+        localStorage.setItem("list", JSON.stringify(task));
     }, [task]);
     return (
         <>

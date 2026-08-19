@@ -2,12 +2,12 @@ import "./Header.css";
 
 export function Header() {
     return (
-        <header class="app-header">
-            <div class="header-left">
-                <h1 class="app-title">My Tasks ✅</h1>
-                <p class="app-sub">Have your task saved and done</p>
+        <header className="app-header">
+            <div className="header-left">
+                <h1 className="app-title">My Tasks ✅</h1>
+                <p className="app-sub">Have your task saved and done</p>
             </div>
-            <a href="https://pasanghilp-art.github.io" class="back-link">
+            <a href="https://pasanghilp-art.github.io" className="back-link">
                 ← Portfolio
             </a>
         </header>

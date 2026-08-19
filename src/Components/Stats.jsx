@@ -3,30 +3,30 @@ import "./Stats.css";
 export function Stats() {
     return (
         <>
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-num" id="stat-total">
+            <div className="stats">
+                <div className="stat">
+                    <span className="stat-num" id="stat-total">
                         0
                     </span>
-                    <span class="stat-label">Total</span>
+                    <span className="stat-label">Total</span>
                 </div>
-                <div class="stat high">
-                    <span class="stat-num" id="stat-high">
+                <div className="stat high">
+                    <span className="stat-num" id="stat-high">
                         0
                     </span>
-                    <span class="stat-label">High</span>
+                    <span className="stat-label">High</span>
                 </div>
-                <div class="stat med">
-                    <span class="stat-num" id="stat-med">
+                <div className="stat med">
+                    <span className="stat-num" id="stat-med">
                         0
                     </span>
-                    <span class="stat-label">Medium</span>
+                    <span className="stat-label">Medium</span>
                 </div>
-                <div class="stat done">
-                    <span class="stat-num" id="stat-done">
+                <div className="stat done">
+                    <span className="stat-num" id="stat-done">
                         0
                     </span>
-                    <span class="stat-label">Done</span>
+                    <span className="stat-label">Done</span>
                 </div>
             </div>
         </>

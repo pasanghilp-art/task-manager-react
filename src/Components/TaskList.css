@@ -39,7 +39,7 @@
 /* Checkbox */
 .check-btn {
   width: 24px; height: 24px;
-  border-radius: 50%;
+  border-radius: 50px;
   border: 2.5px solid var(--border);
   background: var(--bg);
   cursor: pointer;

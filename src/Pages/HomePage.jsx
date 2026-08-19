@@ -12,7 +12,7 @@ export function HomePage({ task, setTask }) {
             <Stats />
             <Input task={task} setTask={setTask} />
             <Filters />
-            <TaskList />
+            <TaskList task={task} setTask={setTask} />
             <BottomRow />
         </>
     );
