@@ -1,6 +1,6 @@
 import "./TaskList.css";
 
-export function TaskList({ task, setTask }) {
+export function TaskList({ task, setTask, filterPriority }) {
     if (task.length === 0) {
         return (
             <div className="empty">
@@ -18,13 +18,28 @@ export function TaskList({ task, setTask }) {
     }
 
     function deleteTask(id) {
-        const updated = task.filter((t) => t.id !== id);
+        const updated = task.filter((taskItem) => taskItem.id !== id);
         setTask(updated);
     }
+
+    const filteredTask = task.filter((taskItem) => {
+        if (filterPriority === "all") return true;
+        if (filterPriority === "done") return taskItem.done;
+        return taskItem.priority === filterPriority;
+    });
+    if (filteredTask.length === 0) {
+        return (
+            <div className="empty">
+                <span className="empty-icon">📝</span>
+                <p>No tasks yet</p>
+            </div>
+        );
+    }
+
     return (
         <>
             <div className="task-list" id="taskList">
-                {task.map((taskItem) => {
+                {filteredTask.map((taskItem) => {
                     return (
                         <div
                             key={taskItem.id}

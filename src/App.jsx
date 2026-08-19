@@ -6,12 +6,20 @@ function App() {
     const [task, setTask] = useState(
         JSON.parse(localStorage.getItem("list") || "[]"),
     );
+
+    const [filterPriority, setFilterPriority] = useState("all");
+
     useEffect(() => {
         localStorage.setItem("list", JSON.stringify(task));
     }, [task]);
     return (
         <>
-            <HomePage task={task} setTask={setTask} />
+            <HomePage
+                task={task}
+                setTask={setTask}
+                filterPriority={filterPriority}
+                setFilterPriority={setFilterPriority}
+            />
         </>
     );
 }
