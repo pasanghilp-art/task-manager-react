@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Input.css";
 
 export function Input({ task, setTask }) {
@@ -8,18 +9,9 @@ export function Input({ task, setTask }) {
     const addBtn = () => {
         const trimed = text.trim();
         if (!trimed) return;
-
-        const newTask = [
-            ...task,
-            {
-                id: crypto.randomUUID(),
-                text: trimed,
-                priority: priority,
-                done: false,
-                created: Date.now(),
-            },
-        ];
-        setTask(newTask);
+        axios
+            .post("http://localhost:3000/tasks", { name: trimed, priority })
+            .then((response) => setTask([...task, response.data]));
         setText("");
     };
 
