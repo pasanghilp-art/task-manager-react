@@ -1,4 +1,5 @@
 import "./TaskList.css";
+import axios from "axios";
 
 export function TaskList({ task, setTask, filterPriority }) {
     const filteredTask = task.filter((taskItem) => {
@@ -24,8 +25,11 @@ export function TaskList({ task, setTask, filterPriority }) {
     };
 
     const deleteTask = (id) => {
-        const updated = task.filter((taskItem) => taskItem.id !== id);
-        setTask(updated);
+        axios.delete(`http://localhost:3000/tasks/${id}`).then(() => {
+            setTask((currentTasks) =>
+                currentTasks.filter((taskItem) => taskItem.id !== id),
+            );
+        });
     };
 
     return (
