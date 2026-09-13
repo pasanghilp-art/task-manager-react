@@ -1,10 +1,19 @@
 import "./BottomRow.css";
+import axios from "axios";
 
 export function BottomRow({ task, setTask }) {
     const updated = task.filter((taskInput) => !taskInput.done);
     const deleteCompleted = () => {
-        setTask(updated);
+        const completedTasks = task.filter((t) => t.done);
+        Promise.all(
+            completedTasks.map((t) =>
+                axios.delete(`http://localhost:3000/tasks/${t.id}`),
+            ),
+        ).then(() => {
+            setTask(task.filter((t) => !t.done));
+        });
     };
+
     return (
         <>
             <div className="bottom-row">
