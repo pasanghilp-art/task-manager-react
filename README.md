@@ -1,16 +1,36 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A task management app built with React, letting users add, complete, delete, and filter tasks by priority.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** https://task-manager-react-6uff.onrender.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![App Screenshot](./assets/image.png)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Add new tasks with a priority level (high, medium, low)
+- Mark tasks as complete or delete them
+- Filter the task list by priority
+- Clean, component-based UI built entirely with React hooks
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Hooks
+
+## Key Implementation Detail
+
+State is managed at the top level and passed down to child components (form, list, and individual task items), demonstrating core React patterns like controlled inputs, list rendering with keys, and lifting state up.
+
+## What I Learned
+
+This was my first independently-built React project after learning the framework — it helped me get comfortable with component architecture, state management, and translating logic I'd already written in vanilla JavaScript into React's component-based approach.
+
+## Running Locally
+
+```bash
+git clone https://github.com/pasanghilp-art/task-manager-react.git
+cd task-manager-react
+npm install
+npm run dev
+```

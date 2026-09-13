@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { HomePage } from "./Pages/HomePage";
+import axios from "axios";
 import "./App.css";
 
 function App() {
-    const [task, setTask] = useState(
-        JSON.parse(localStorage.getItem("list") || "[]"),
-    );
+    const [task, setTask] = useState([]);
 
     const [filterPriority, setFilterPriority] = useState("all");
 
     useEffect(() => {
-        localStorage.setItem("list", JSON.stringify(task));
-    }, [task]);
+        axios
+            .get("http://localhost:3000/tasks")
+            .then((response) => setTask(response.data));
+    }, []);
     return (
         <>
             <HomePage
