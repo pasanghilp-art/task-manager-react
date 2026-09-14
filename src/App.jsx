@@ -10,7 +10,7 @@ function App() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/tasks")
+            .get(" https://task-manager-backend-ctw2.onrender.com/tasks")
             .then((response) => setTask(response.data));
     }, []);
     return (

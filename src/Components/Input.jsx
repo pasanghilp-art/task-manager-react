@@ -10,7 +10,10 @@ export function Input({ task, setTask }) {
         const trimed = text.trim();
         if (!trimed) return;
         axios
-            .post("http://localhost:3000/tasks", { name: trimed, priority })
+            .post(" https://task-manager-backend-ctw2.onrender.com/tasks", {
+                text: trimed,
+                priority,
+            })
             .then((response) => setTask([...task, response.data]));
         setText("");
     };

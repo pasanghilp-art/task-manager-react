@@ -25,11 +25,15 @@ export function TaskList({ task, setTask, filterPriority }) {
     };
 
     const deleteTask = (id) => {
-        axios.delete(`http://localhost:3000/tasks/${id}`).then(() => {
-            setTask((currentTasks) =>
-                currentTasks.filter((taskItem) => taskItem.id !== id),
-            );
-        });
+        axios
+            .delete(
+                ` https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
+            )
+            .then(() => {
+                setTask((currentTasks) =>
+                    currentTasks.filter((taskItem) => taskItem.id !== id),
+                );
+            });
     };
 
     return (

@@ -7,7 +7,9 @@ export function BottomRow({ task, setTask }) {
         const completedTasks = task.filter((t) => t.done);
         Promise.all(
             completedTasks.map((t) =>
-                axios.delete(`http://localhost:3000/tasks/${t.id}`),
+                axios.delete(
+                    ` https://task-manager-backend-ctw2.onrender.com/tasks/${t.id}`,
+                ),
             ),
         ).then(() => {
             setTask(task.filter((t) => !t.done));
