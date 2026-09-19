@@ -19,7 +19,7 @@ export function TaskList({ task, setTask, filterPriority }) {
 
     const toggleDone = (id) => {
         const updated = task.map((t) =>
-            t.id === id ? { ...t, done: !t.done } : t,
+            t._id === id ? { ...t, done: !t.done } : t,
         );
         setTask(updated);
     };
@@ -31,7 +31,7 @@ export function TaskList({ task, setTask, filterPriority }) {
             )
             .then(() => {
                 setTask((currentTasks) =>
-                    currentTasks.filter((taskItem) => taskItem.id !== id),
+                    currentTasks.filter((taskItem) => taskItem._id !== id),
                 );
             });
     };
@@ -42,13 +42,13 @@ export function TaskList({ task, setTask, filterPriority }) {
                 {filteredTask.map((taskItem) => {
                     return (
                         <div
-                            key={taskItem.id}
+                            key={taskItem._id}
                             className={`task-item ${taskItem.priority}${taskItem.done ? " done" : ""}`}
                         >
                             <input
                                 type="checkbox"
                                 checked={taskItem.done}
-                                onChange={() => toggleDone(taskItem.id)}
+                                onChange={() => toggleDone(taskItem._id)}
                                 className="check-btn"
                             />
                             <span className="task-text">{taskItem.text}</span>
@@ -57,7 +57,7 @@ export function TaskList({ task, setTask, filterPriority }) {
                             </span>
                             <button
                                 className="del-btn"
-                                onClick={() => deleteTask(taskItem.id)}
+                                onClick={() => deleteTask(taskItem._id)}
                             >
                                 ✕
                             </button>

@@ -8,7 +8,7 @@ export function BottomRow({ task, setTask }) {
         Promise.all(
             completedTasks.map((t) =>
                 axios.delete(
-                    ` https://task-manager-backend-ctw2.onrender.com/tasks/${t.id}`,
+                    ` https://task-manager-backend-ctw2.onrender.com/tasks/${t._id}`,
                 ),
             ),
         ).then(() => {
