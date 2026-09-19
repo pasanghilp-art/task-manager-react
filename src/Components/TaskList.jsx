@@ -51,7 +51,7 @@ export function TaskList({ task, setTask, filterPriority }) {
                                 onChange={() => toggleDone(taskItem._id)}
                                 className="check-btn"
                             />
-                            <span className="task-text">{taskItem.text}</span>
+                            <span className="task-text">{taskItem.name}</span>
                             <span className="pri-badge">
                                 {taskItem.priority}
                             </span>

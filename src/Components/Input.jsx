@@ -11,7 +11,7 @@ export function Input({ task, setTask }) {
         if (!trimed) return;
         axios
             .post(" https://task-manager-backend-ctw2.onrender.com/tasks", {
-                text: trimed,
+                name: trimed,
                 priority,
             })
             .then((response) => setTask([...task, response.data]));
