@@ -11,8 +11,8 @@ export function TaskList({ task, setTask, filterPriority }) {
     if (filteredTask.length === 0) {
         return (
             <div className="empty">
-                <span className="empty-icon">📝</span>
-                <p>No tasks yet</p>
+                <p className="empty-title">Nothing here yet</p>
+                <p className="empty-hint">Add a task above to get started.</p>
             </div>
         );
     }
@@ -27,7 +27,7 @@ export function TaskList({ task, setTask, filterPriority }) {
     const deleteTask = (id) => {
         axios
             .delete(
-                ` https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
+                `https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
             )
             .then(() => {
                 setTask((currentTasks) =>

@@ -8,7 +8,7 @@ export function BottomRow({ task, setTask }) {
         Promise.all(
             completedTasks.map((t) =>
                 axios.delete(
-                    ` https://task-manager-backend-ctw2.onrender.com/tasks/${t._id}`,
+                    `https://task-manager-backend-ctw2.onrender.com/tasks/${t._id}`,
                 ),
             ),
         ).then(() => {
@@ -21,15 +21,15 @@ export function BottomRow({ task, setTask }) {
             <div className="bottom-row">
                 <span className="task-count" id="taskCount">
                     {updated.length === 0
-                        ? "All Done!"
-                        : `${updated.length} task remaining`}
+                        ? "All done"
+                        : `${updated.length} ${updated.length === 1 ? "task" : "tasks"} remaining`}
                 </span>
                 <button
                     className="clear-btn"
                     id="clearBtn"
                     onClick={deleteCompleted}
                 >
-                    🗑 Clear completed
+                    Clear completed
                 </button>
             </div>
         </>

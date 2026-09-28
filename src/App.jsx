@@ -14,14 +14,14 @@ function App() {
             .then((response) => setTask(response.data));
     }, []);
     return (
-        <>
+        <div className="app">
             <HomePage
                 task={task}
                 setTask={setTask}
                 filterPriority={filterPriority}
                 setFilterPriority={setFilterPriority}
             />
-        </>
+        </div>
     );
 }
 

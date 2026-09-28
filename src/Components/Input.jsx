@@ -10,7 +10,7 @@ export function Input({ task, setTask }) {
         const trimed = text.trim();
         if (!trimed) return;
         axios
-            .post(" https://task-manager-backend-ctw2.onrender.com/tasks", {
+            .post("https://task-manager-backend-ctw2.onrender.com/tasks", {
                 name: trimed,
                 priority,
             })
@@ -52,19 +52,19 @@ export function Input({ task, setTask }) {
                         className={`pri-btn high ${priority === "high" ? "selected" : ""}`}
                         onClick={() => setPriority("high")}
                     >
-                        🔴 High
+                        High
                     </button>
                     <button
                         className={`pri-btn med ${priority === "med" ? "selected" : ""}`}
                         onClick={() => setPriority("med")}
                     >
-                        🟡 Medium
+                        Medium
                     </button>
                     <button
                         className={`pri-btn low ${priority === "low" ? "selected" : ""}`}
                         onClick={() => setPriority("low")}
                     >
-                        🟢 Low
+                        Low
                     </button>
                 </div>
             </div>

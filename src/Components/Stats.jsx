@@ -37,7 +37,7 @@ export function Stats({ task }) {
                     <span className="stat-num" id="stat-low">
                         {tasklow}
                     </span>
-                    <span className="stat-label">low</span>
+                    <span className="stat-label">Low</span>
                 </div>
                 <div className="stat done">
                     <span className="stat-num" id="stat-done">

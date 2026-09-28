@@ -23,7 +23,7 @@ export function Filters({ filterPriority, setFilterPriority }) {
                     data-filter="high"
                     onClick={() => filterClicked("high")}
                 >
-                    🔴 High
+                    High
                 </button>
                 <button
                     className={`filter-btn ${
@@ -32,7 +32,7 @@ export function Filters({ filterPriority, setFilterPriority }) {
                     data-filter="med"
                     onClick={() => filterClicked("med")}
                 >
-                    🟡 Medium
+                    Medium
                 </button>
                 <button
                     className={`filter-btn ${
@@ -41,7 +41,7 @@ export function Filters({ filterPriority, setFilterPriority }) {
                     data-filter="low"
                     onClick={() => filterClicked("low")}
                 >
-                    🟢 Low
+                    Low
                 </button>
                 <button
                     className={`filter-btn ${
@@ -50,7 +50,7 @@ export function Filters({ filterPriority, setFilterPriority }) {
                     data-filter="done"
                     onClick={() => filterClicked("done")}
                 >
-                    ✅ Done
+                    Done
                 </button>
             </div>
         </>
