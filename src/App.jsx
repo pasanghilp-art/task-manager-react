@@ -3,6 +3,7 @@ import { HomePage } from "./Pages/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./Pages/LoginPage";
 import { RegisterPage } from "./Pages/RegisterPage";
+import { RequireAuth } from "./Pages/RequireAuth";
 import axios from "axios";
 import "./App.css";
 
@@ -23,12 +24,14 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            <HomePage
-                                task={task}
-                                setTask={setTask}
-                                filterPriority={filterPriority}
-                                setFilterPriority={setFilterPriority}
-                            />
+                            <RequireAuth>
+                                <HomePage
+                                    task={task}
+                                    setTask={setTask}
+                                    filterPriority={filterPriority}
+                                    setFilterPriority={setFilterPriority}
+                                />
+                            </RequireAuth>
                         }
                     />
                     <Route path="/login" element={<LoginPage />} />
