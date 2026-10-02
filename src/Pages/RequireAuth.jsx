@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import "../Components/AuthComponents/Auth.css";
 
 export function RequireAuth({ children }) {
-    const [status, setStatus] = useState("checking");
+    const [status, setStatus] = useState(() =>
+        localStorage.getItem("token") ? "checking" : "guest",
+    );
 
     useEffect(() => {
-        axios
-            .get("https://task-manager-backend-ctw2.onrender.com/api/me", {
-                withCredentials: true,
-            })
+        const token = localStorage.getItem("token");
+        if (!token) return;
+        api.get("/api/me")
             .then(() => setStatus("authed"))
             .catch(() => setStatus("guest"));
     }, []);
