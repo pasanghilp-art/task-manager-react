@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthForm } from "./useAuthForm";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../../api";
 import "./Auth.css";
 
 export function Register() {
@@ -25,10 +25,7 @@ export function Register() {
         setLoading(true);
 
         try {
-            await axios.post(
-                "https://task-manager-backend-ctw2.onrender.com/api/register",
-                { name, email, password },
-            );
+            await api.post("/api/register", { name, email, password });
 
             navigate("/login");
         } catch (err) {

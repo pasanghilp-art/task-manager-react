@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthForm } from "./useAuthForm";
-import axios from "axios";
+import api from "../../api";
 import "./Auth.css";
 
 export function Login() {
@@ -21,12 +21,8 @@ export function Login() {
         setLoading(true);
 
         try {
-            await axios.post(
-                "https://task-manager-backend-ctw2.onrender.com/api/login",
-                { email, password },
-                { withCredentials: true },
-            );
-
+            const response = await api.post("/api/login", { email, password });
+            localStorage.setItem("token", response.data.token);
             navigate("/");
         } catch (err) {
             setError(err.response?.data?.message || "Could not reach server");
