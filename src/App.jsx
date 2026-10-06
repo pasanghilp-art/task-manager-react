@@ -11,11 +11,6 @@ function App() {
     const [task, setTask] = useState([]);
     const [filterPriority, setFilterPriority] = useState("all");
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         axios
             .get("https://task-manager-backend-ctw2.onrender.com/tasks", {
@@ -47,36 +42,8 @@ function App() {
                             </RequireAuth>
                         }
                     />
-                    <Route
-                        path="/login"
-                        element={
-                            <LoginPage
-                                email={email}
-                                setEmail={setEmail}
-                                password={password}
-                                setPassword={setPassword}
-                                error={error}
-                                setError={setError}
-                                loading={loading}
-                                setLoading={setLoading}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/register"
-                        element={
-                            <RegisterPage
-                                email={email}
-                                setEmail={setEmail}
-                                password={password}
-                                setPassword={setPassword}
-                                error={error}
-                                setError={setError}
-                                loading={loading}
-                                setLoading={setLoading}
-                            />
-                        }
-                    />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
                 </Routes>
             </div>
         </BrowserRouter>
