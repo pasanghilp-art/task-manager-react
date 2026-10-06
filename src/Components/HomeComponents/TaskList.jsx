@@ -17,11 +17,35 @@ export function TaskList({ task, setTask, filterPriority }) {
         );
     }
 
-    const toggleDone = (id) => {
-        const updated = task.map((t) =>
-            t._id === id ? { ...t, done: !t.done } : t,
+    const toggleDone = async (id) => {
+        const taskToUpdate = task.find((t) => t._id === id);
+        if (!taskToUpdate) return;
+
+        const updatedDoneState = !taskToUpdate.done;
+
+        setTask((currentTasks) =>
+            currentTasks.map((t) =>
+                t._id === id ? { ...t, done: updatedDoneState } : t,
+            ),
         );
-        setTask(updated);
+
+        try {
+            const response = await axios.put(
+                `https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
+                { done: updatedDoneState },
+            );
+
+            setTask((currentTasks) =>
+                currentTasks.map((t) => (t._id === id ? response.data : t)),
+            );
+        } catch (error) {
+            setTask((currentTasks) =>
+                currentTasks.map((t) =>
+                    t._id === id ? { ...t, done: taskToUpdate.done } : t,
+                ),
+            );
+            console.error("Failed to update task status:", error);
+        }
     };
 
     const deleteTask = (id) => {
