@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "../../api";
 import "./Auth.css";
+import { GuestButton } from "./GuestButton";
 
 export function Register() {
     const [name, setName] = useState("");
@@ -99,6 +100,8 @@ export function Register() {
                         {loading ? "Creating account..." : "Create account"}
                     </button>
                 </form>
+
+                <GuestButton />
 
                 <p className="auth-switch">
                     Already have an account? <Link to="/login">Log in</Link>

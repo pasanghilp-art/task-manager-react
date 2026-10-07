@@ -1,3 +1,4 @@
+import { GuestButton } from "./GuestButton";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthForm } from "./useAuthForm";
 import api from "../../api";
@@ -78,6 +79,8 @@ export function Login() {
                         {loading ? "Logging in..." : "Log in"}
                     </button>
                 </form>
+
+                <GuestButton />
 
                 <p className="auth-switch">
                     No account? <Link to="/register">Register</Link>
