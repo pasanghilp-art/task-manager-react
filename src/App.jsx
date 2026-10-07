@@ -4,27 +4,34 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./Pages/LoginPage";
 import { RegisterPage } from "./Pages/RegisterPage";
 import { RequireAuth } from "./Pages/RequireAuth";
-import axios from "axios";
+import { getSession } from "./session";
+import api from "./api";
 import "./App.css";
 
-function App() {
+function HomeRoute() {
     const [task, setTask] = useState([]);
     const [filterPriority, setFilterPriority] = useState("all");
+    const isGuest = !!getSession()?.isGuest;
 
     useEffect(() => {
-        axios
-            .get("https://task-manager-backend-ctw2.onrender.com/tasks", {
-                withCredentials: true,
-                validateStatus: function (httpStatus) {
-                    return httpStatus === 200 || httpStatus === 401;
-                },
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    setTask(response.data);
-                }
-            });
-    }, []);
+        if (isGuest) return;
+        api.get("/tasks")
+            .then((response) => setTask(response.data))
+            .catch(() => {});
+    }, [isGuest]);
+
+    return (
+        <HomePage
+            task={task}
+            setTask={setTask}
+            filterPriority={filterPriority}
+            setFilterPriority={setFilterPriority}
+            isGuest={isGuest}
+        />
+    );
+}
+
+function App() {
     return (
         <BrowserRouter>
             <div className="app">
@@ -33,12 +40,7 @@ function App() {
                         path="/"
                         element={
                             <RequireAuth>
-                                <HomePage
-                                    task={task}
-                                    setTask={setTask}
-                                    filterPriority={filterPriority}
-                                    setFilterPriority={setFilterPriority}
-                                />
+                                <HomeRoute />
                             </RequireAuth>
                         }
                     />

@@ -104,3 +104,18 @@
   font-weight: 600;
   color: var(--ink-soft);
 }
+
+.auth-guest {
+  width: 100%;
+  background: transparent;
+  color: var(--accent-deep);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.auth-guest:hover { background: var(--accent-tint); border-color: var(--accent); }
