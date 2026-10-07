@@ -1,7 +1,7 @@
 import "./TaskList.css";
-import axios from "axios";
+import api from "../../api";
 
-export function TaskList({ task, setTask, filterPriority }) {
+export function TaskList({ task, setTask, filterPriority, isGuest }) {
     const filteredTask = task.filter((taskItem) => {
         if (filterPriority === "all") return true;
         if (filterPriority === "done") return taskItem.done;
@@ -29,11 +29,12 @@ export function TaskList({ task, setTask, filterPriority }) {
             ),
         );
 
+        if (isGuest) return;
+
         try {
-            const response = await axios.put(
-                `https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
-                { done: updatedDoneState },
-            );
+            const response = await api.put(`/tasks/${id}`, {
+                done: updatedDoneState,
+            });
 
             setTask((currentTasks) =>
                 currentTasks.map((t) => (t._id === id ? response.data : t)),
@@ -49,15 +50,18 @@ export function TaskList({ task, setTask, filterPriority }) {
     };
 
     const deleteTask = (id) => {
-        axios
-            .delete(
-                `https://task-manager-backend-ctw2.onrender.com/tasks/${id}`,
-            )
-            .then(() => {
-                setTask((currentTasks) =>
-                    currentTasks.filter((taskItem) => taskItem._id !== id),
-                );
-            });
+        const taskToDelete = task.find((t) => t._id === id);
+        if (!taskToDelete || !taskToDelete.done) return; // unticked: do nothing
+
+        if (isGuest) {
+            setTask((currentTasks) => currentTasks.filter((t) => t._id !== id));
+            return;
+        }
+        api.delete(`/tasks/${id}`).then(() => {
+            setTask((currentTasks) =>
+                currentTasks.filter((taskItem) => taskItem._id !== id),
+            );
+        });
     };
 
     return (

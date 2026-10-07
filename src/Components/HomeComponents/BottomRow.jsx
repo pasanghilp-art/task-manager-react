@@ -1,16 +1,17 @@
 import "./BottomRow.css";
-import axios from "axios";
+import api from "../../api";
 
-export function BottomRow({ task, setTask }) {
+export function BottomRow({ task, setTask, isGuest }) {
     const updated = task.filter((taskInput) => !taskInput.done);
+
     const deleteCompleted = () => {
+        if (isGuest) {
+            setTask((current) => current.filter((t) => !t.done));
+            return;
+        }
         const completedTasks = task.filter((t) => t.done);
         Promise.all(
-            completedTasks.map((t) =>
-                axios.delete(
-                    `https://task-manager-backend-ctw2.onrender.com/tasks/${t._id}`,
-                ),
-            ),
+            completedTasks.map((t) => api.delete(`/tasks/${t._id}`)),
         ).then(() => {
             setTask(task.filter((t) => !t.done));
         });

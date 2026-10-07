@@ -1,20 +1,30 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../api";
 import "./Input.css";
 
-export function Input({ task, setTask }) {
+export function Input({ setTask, isGuest }) {
     const [text, setText] = useState("");
     const [priority, setPriority] = useState("high");
 
     const addBtn = () => {
         const trimed = text.trim();
         if (!trimed) return;
-        axios
-            .post("https://task-manager-backend-ctw2.onrender.com/tasks", {
-                name: trimed,
-                priority,
-            })
-            .then((response) => setTask([...task, response.data]));
+
+        if (isGuest) {
+            setTask((current) => [
+                ...current,
+                {
+                    _id: crypto.randomUUID(),
+                    name: trimed,
+                    priority,
+                    done: false,
+                },
+            ]);
+        } else {
+            api.post("/tasks", { name: trimed, priority }).then((response) =>
+                setTask((current) => [...current, response.data]),
+            );
+        }
         setText("");
     };
 
