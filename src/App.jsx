@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { HomePage } from "./Pages/HomePage";
+import { ExpensesPage } from "./Pages/ExpensesPage";
+import { Layout } from "./Components/HomeComponents/Layout/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./Pages/LoginPage";
 import { RegisterPage } from "./Pages/RegisterPage";
@@ -34,20 +36,20 @@ function HomeRoute() {
 function App() {
     return (
         <BrowserRouter>
-            <div className="app">
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <RequireAuth>
-                                <HomeRoute />
-                            </RequireAuth>
-                        }
-                    />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                </Routes>
-            </div>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route
+                    element={
+                        <RequireAuth>
+                            <Layout />
+                        </RequireAuth>
+                    }
+                >
+                    <Route path="/" element={<HomeRoute />} />
+                    <Route path="/expenses" element={<ExpensesPage />} />
+                </Route>
+            </Routes>
         </BrowserRouter>
     );
 }
