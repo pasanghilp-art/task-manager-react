@@ -1,20 +1,88 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../Sidebar/SideBar";
+import { Sidebar } from "../Sidebar/Sidebar";
 import "./Layout.css";
 
+const MIN = 200;
+const MAX = 360;
+const DEFAULT = 248;
+const COLLAPSED = 72;
+const SNAP = 140;
+
 export function Layout() {
+    const [width, setWidth] = useState(() => {
+        const saved = Number(localStorage.getItem("sidebarWidth"));
+        return saved >= MIN && saved <= MAX ? saved : DEFAULT;
+    });
     const [collapsed, setCollapsed] = useState(
         () => localStorage.getItem("sidebarCollapsed") === "true",
     );
+    const [resizing, setResizing] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const drag = useRef(null);
+
+    useEffect(() => {
+        localStorage.setItem("sidebarWidth", String(width));
+    }, [width]);
 
     useEffect(() => {
         localStorage.setItem("sidebarCollapsed", String(collapsed));
     }, [collapsed]);
 
+    useEffect(() => {
+        const onKey = (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "b") {
+                e.preventDefault();
+                setCollapsed((c) => !c);
+            }
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, []);
+
+    const resizerProps = {
+        onPointerDown: (e) => {
+            e.currentTarget.setPointerCapture(e.pointerId);
+            drag.current = {
+                startX: e.clientX,
+                startWidth: collapsed ? COLLAPSED : width,
+                moved: false,
+            };
+            setResizing(true);
+        },
+        onPointerMove: (e) => {
+            const d = drag.current;
+            if (!d) return;
+
+            const delta = e.clientX - d.startX;
+            if (Math.abs(delta) > 3) d.moved = true;
+            if (!d.moved) return;
+
+            const raw = d.startWidth + delta;
+            if (raw < SNAP) {
+                setCollapsed(true);
+            } else {
+                setCollapsed(false);
+                setWidth(Math.min(MAX, Math.max(MIN, raw)));
+            }
+        },
+        onPointerUp: () => {
+            const d = drag.current;
+            drag.current = null;
+            setResizing(false);
+            if (d && !d.moved) setCollapsed((c) => !c);
+        },
+        onPointerCancel: () => {
+            drag.current = null;
+            setResizing(false);
+        },
+    };
+
     return (
-        <div className={`layout${collapsed ? " is-collapsed" : ""}`}>
+        <div
+            className={`layout${resizing ? " is-resizing" : ""}`}
+            style={{ "--sidebar-w": `${collapsed ? COLLAPSED : width}px` }}
+        >
             <button
                 className="layout-menu-btn"
                 onClick={() => setMobileOpen(true)}
@@ -43,9 +111,9 @@ export function Layout() {
 
             <Sidebar
                 collapsed={collapsed}
-                onToggle={() => setCollapsed((c) => !c)}
                 mobileOpen={mobileOpen}
                 onNavigate={() => setMobileOpen(false)}
+                resizerProps={resizerProps}
             />
 
             <main className="layout-main">

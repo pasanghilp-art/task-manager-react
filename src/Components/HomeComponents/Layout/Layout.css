@@ -1,9 +1,9 @@
 .layout {
-  --sidebar-w: 248px;
+  --sidebar-w: 248px; /* Layout.jsx overwrites this as you resize */
   min-height: 100vh;
 }
-.layout.is-collapsed { --sidebar-w: 72px; }
 
+/* body already has 16px side padding, so +16px leaves a 16px gap */
 .layout-main {
   margin-left: calc(var(--sidebar-w) + 16px);
   transition: margin-left 0.25s ease;
@@ -12,6 +12,11 @@
   max-width: 760px;
   margin: 0 auto;
 }
+
+/* while dragging, follow the mouse instantly (no easing) */
+.layout.is-resizing { user-select: none; cursor: col-resize; }
+.layout.is-resizing .layout-main,
+.layout.is-resizing .sidebar { transition: none; }
 
 .layout-menu-btn,
 .layout-backdrop { display: none; }
