@@ -1,0 +1,26 @@
+.summary-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.summary-total {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.category-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.category-breakdown p {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #374151;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 6px;
+}
