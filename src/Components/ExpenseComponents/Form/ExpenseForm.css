@@ -1,0 +1,49 @@
+.exp-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.exp-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.exp-field label { font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+
+.exp-field input {
+  width: 100%;
+  min-width: 0;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--mist);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.exp-field input::placeholder { color: var(--ink-faint); }
+.exp-field input:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 4px var(--accent-tint);
+}
+
+.exp-save {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.exp-save:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(84, 104, 255, 0.3); }
+.exp-save:active { transform: scale(0.98); }
+
+@media (max-width: 520px) {
+  .exp-form-grid { grid-template-columns: 1fr; }
+}

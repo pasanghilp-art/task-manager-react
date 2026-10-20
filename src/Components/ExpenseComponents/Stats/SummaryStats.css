@@ -1,0 +1,33 @@
+.exp-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 20px;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.exp-stat { min-width: 0; padding: 18px 8px; text-align: center; }
+.exp-stat + .exp-stat { border-left: 1px solid var(--line); }
+
+.exp-stat-num {
+  display: block;
+  margin-bottom: 6px;
+  padding: 0 6px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.exp-stat-num.is-accent { color: var(--accent); }
+.exp-stat-label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+
+@media (max-width: 520px) {
+  .exp-stats { grid-template-columns: repeat(2, 1fr); }
+  .exp-stat:nth-child(odd) { border-left: none; }
+  .exp-stat:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  .exp-stat-num { font-size: 20px; }
+}
