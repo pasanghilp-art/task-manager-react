@@ -12,7 +12,7 @@ export function ExpensesPage() {
             <div className="exp-page">
                 <header className="exp-head">
                     <h1 className="exp-title">Expenses</h1>
-                    <p className="exp-sub">Track where your money goes.</p>
+                    <p className="exp-sub">Track where your money goes</p>
                 </header>
 
                 <SummaryStats />
