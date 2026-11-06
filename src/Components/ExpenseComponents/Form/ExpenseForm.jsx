@@ -45,8 +45,8 @@ export function ExpenseForm() {
                         name="amount"
                         type="number"
                         min="0.01"
+                        autoComplete="off"
                         step="any"
-                        placeholder="0"
                         value={formData.amount}
                         onChange={saveFormData}
                         required
