@@ -34,6 +34,15 @@ const ExpensesIcon = () => (
         <path d="M16 15h2" />
     </Icon>
 );
+const AiIcon = () => (
+    <Icon>
+        <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+        <path d="M19 3v4" />
+        <path d="M17 5h4" />
+        <path d="M5 17v4" />
+        <path d="M3 19h4" />
+    </Icon>
+);
 
 const LogoutIcon = () => (
     <Icon>
@@ -88,6 +97,15 @@ export function Sidebar({ collapsed, mobileOpen, onNavigate, resizerProps }) {
                 >
                     <ExpensesIcon />
                     <span className="sb-text">Expenses</span>
+                </NavLink>
+                <NavLink
+                    to="/ai"
+                    className="sidebar-link"
+                    data-tip="AI Assistant"
+                    onClick={onNavigate}
+                >
+                    <AiIcon />
+                    <span className="sb-text">AI Assistant</span>
                 </NavLink>
             </nav>
 
