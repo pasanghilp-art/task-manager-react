@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { HomePage } from "./Pages/HomePage";
 import { ExpensesPage } from "./Pages/ExpensesPage";
+import { ChatPage } from "./Pages/ChatPage";
 import { Layout } from "./Components/HomeComponents/Layout/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage } from "./Pages/LoginPage";
@@ -48,6 +49,7 @@ function App() {
                 >
                     <Route path="/" element={<HomeRoute />} />
                     <Route path="/expenses" element={<ExpensesPage />} />
+                    <Route path="/ai" element={<ChatPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
