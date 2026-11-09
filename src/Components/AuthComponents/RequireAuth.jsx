@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { getSession } from "../../session";
 import api from "../../api";
-import "../Components/AuthComponents/Auth.css";
+import "./Auth.css";
 
 export function RequireAuth({ children }) {
     const [status, setStatus] = useState(() =>

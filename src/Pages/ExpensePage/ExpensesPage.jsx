@@ -5,7 +5,7 @@ import { ExpenseProvider } from "../../Components/ExpenseComponents/Content/Expe
 import { CategoryBarChart } from "../../Components/ExpenseComponents/Charts/CategoryBarChart";
 import { CategoryPieChart } from "../../Components/ExpenseComponents/Charts/CategoryPieChart";
 import { getSession } from "../../session";
-import "../Components/ExpenseComponents/ExpensesPage.css";
+import "../../Components/ExpenseComponents/ExpensesPage.css";
 
 export function ExpensesPage() {
     const isGuest = !!getSession()?.isGuest;

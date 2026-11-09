@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { HomePage } from "./Pages/HomePage";
-import { ExpensesPage } from "./Pages/ExpensesPage";
-import { ChatPage } from "./Pages/ChatPage";
+import { HomePage } from "./Pages/HomePage/HomePage";
+import { ExpensesPage } from "./Pages/ExpensePage/ExpensesPage";
+import { ChatPage } from "./Pages/ChatPage/ChatPage";
 import { Layout } from "./Components/HomeComponents/Layout/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginPage } from "./Pages/LoginPage";
-import { RegisterPage } from "./Pages/RegisterPage";
-import { RequireAuth } from "./Pages/RequireAuth";
+import { LoginPage } from "./Pages/SignupPage/LoginPage";
+import { RegisterPage } from "./Pages/SignupPage/RegisterPage";
+import { RequireAuth } from "./Components/AuthComponents/RequireAuth";
 import { getSession } from "./session";
 import api from "./api";
 import "./App.css";
