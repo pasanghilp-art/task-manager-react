@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../Sidebar/SideBar";
+import { SideBar } from "../SideBar/SideBar";
 import "./Layout.css";
 
 const MIN = 200;
@@ -11,22 +11,22 @@ const SNAP = 140;
 
 export function Layout() {
     const [width, setWidth] = useState(() => {
-        const saved = Number(localStorage.getItem("sidebarWidth"));
+        const saved = Number(localStorage.getItem("SideBarWidth"));
         return saved >= MIN && saved <= MAX ? saved : DEFAULT;
     });
     const [collapsed, setCollapsed] = useState(
-        () => localStorage.getItem("sidebarCollapsed") === "true",
+        () => localStorage.getItem("SideBarCollapsed") === "true",
     );
     const [resizing, setResizing] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const drag = useRef(null);
 
     useEffect(() => {
-        localStorage.setItem("sidebarWidth", String(width));
+        localStorage.setItem("SideBarWidth", String(width));
     }, [width]);
 
     useEffect(() => {
-        localStorage.setItem("sidebarCollapsed", String(collapsed));
+        localStorage.setItem("SideBarCollapsed", String(collapsed));
     }, [collapsed]);
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export function Layout() {
     return (
         <div
             className={`layout${resizing ? " is-resizing" : ""}`}
-            style={{ "--sidebar-w": `${collapsed ? COLLAPSED : width}px` }}
+            style={{ "--SideBar-w": `${collapsed ? COLLAPSED : width}px` }}
         >
             <button
                 className="layout-menu-btn"
@@ -109,7 +109,7 @@ export function Layout() {
                 />
             )}
 
-            <Sidebar
+            <SideBar
                 collapsed={collapsed}
                 mobileOpen={mobileOpen}
                 onNavigate={() => setMobileOpen(false)}
