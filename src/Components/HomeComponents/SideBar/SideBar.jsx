@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getSession } from "../../../session";
-import "./Sidebar.css";
+import "./SideBar.css";
 
 function Icon({ children }) {
     return (
