@@ -1,10 +1,10 @@
-import { ExpenseForm } from "../Components/ExpenseComponents/Form/ExpenseForm";
-import { ExpenseList } from "../Components/ExpenseComponents/List/ExpenseList";
-import { SummaryStats } from "../Components/ExpenseComponents/Stats/SummaryStats";
-import { ExpenseProvider } from "../Components/ExpenseComponents/Content/ExpenseContent";
-import { CategoryBarChart } from "../Components/ExpenseComponents/Charts/CategoryBarChart";
-import { CategoryPieChart } from "../Components/ExpenseComponents/Charts/CategoryPieChart";
-import { getSession } from "../session";
+import { ExpenseForm } from "../../Components/ExpenseComponents/Form/ExpenseForm";
+import { ExpenseList } from "../../Components/ExpenseComponents/List/ExpenseList";
+import { SummaryStats } from "../../Components/ExpenseComponents/Stats/SummaryStats";
+import { ExpenseProvider } from "../../Components/ExpenseComponents/Content/ExpenseContent";
+import { CategoryBarChart } from "../../Components/ExpenseComponents/Charts/CategoryBarChart";
+import { CategoryPieChart } from "../../Components/ExpenseComponents/Charts/CategoryPieChart";
+import { getSession } from "../../session";
 import "../Components/ExpenseComponents/ExpensesPage.css";
 
 export function ExpensesPage() {
@@ -20,8 +20,8 @@ export function ExpensesPage() {
 
                 {isGuest && (
                     <p className="guest-banner">
-                        Guest mode: expenses won’t be saved and your session ends in 1
-                        hour.
+                        Guest mode: expenses won’t be saved and your session
+                        ends in 1 hour.
                     </p>
                 )}
 
