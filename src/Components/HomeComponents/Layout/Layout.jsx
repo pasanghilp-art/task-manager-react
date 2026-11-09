@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../Sidebar/Sidebar";
+import { Sidebar } from "../Sidebar/SideBar";
 import "./Layout.css";
 
 const MIN = 200;
