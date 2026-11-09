@@ -52,7 +52,7 @@ const LogoutIcon = () => (
     </Icon>
 );
 
-export function Sidebar({ collapsed, mobileOpen, onNavigate, resizerProps }) {
+export function SideBar({ collapsed, mobileOpen, onNavigate, resizerProps }) {
     const navigate = useNavigate();
     const [session] = useState(getSession); // { isGuest, name, email, ... }
 
