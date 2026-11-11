@@ -1,3 +1,4 @@
+import api from "../../api";
 import { useState } from "react";
 import { getSession } from "../../session";
 import { ChatHeader } from "../../Components/ChatComponents/ChatHeader";
@@ -5,10 +6,9 @@ import { MessageList } from "../../Components/ChatComponents/MessageList";
 import { ChatInput } from "../../Components/ChatComponents/ChatInput";
 import "./ChatPage.css";
 
-function getReply() {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve("This is a fake reply for now."), 800);
-    });
+async function getReply(messages) {
+    const res = await api.post("/ai/chat", { messages });
+    return res.data.reply;
 }
 
 export function ChatPage() {
