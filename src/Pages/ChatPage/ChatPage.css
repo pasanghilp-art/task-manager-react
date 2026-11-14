@@ -1,21 +1,14 @@
 .chat-page {
-    display: flex;
-    flex-direction: column;
-    height: calc(100dvh - 64px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-bottom: 16px;
 }
 
 .chat-box {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 12px rgba(20, 30, 80, 0.06);
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-}
-
-@media (max-width: 768px) {
-    .chat-page {
-        height: calc(100dvh - 130px);
-    }
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
