@@ -16,7 +16,8 @@ export function ChatPage() {
     const [messages, setMessages] = useState([
         {
             role: "assistant",
-            content: "Hi! Ask me anything about your tasks or expenses.",
+            content:
+                'Hi! Ask me about your tasks or spending, like "what should I do first?" or "summarize my expenses".',
         },
     ]);
     const [input, setInput] = useState("");
